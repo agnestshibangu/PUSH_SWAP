@@ -31,6 +31,8 @@ char    **my_split(char *str, char delimiter);
 t_stack_node* create_list(int ac, char **av);
 void printList(t_stack_node **head);
 t_stack_node* find_last_node(t_stack_node **headRef);
+
+void display_prev_values(t_stack_node **head);
 // static void	rotate(t_stack_node **head);
 // static void     rev_rotate(t_stack_node **head);
 // t_stack_node* create_list(int ac, char **av, t_stack_node** head);

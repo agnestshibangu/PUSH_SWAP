@@ -16,7 +16,13 @@ int main(int ac, char **av)
     t_stack_node* head = NULL;
     head = create_list(ac, av);
   
-    // rev_rotate(&head);
+    printList(&head);
+
+    // rotate(&head);
+
+    rev_rotate(&head);
+
+    // display_prev_values(&head);
 
     printList(&head);
 

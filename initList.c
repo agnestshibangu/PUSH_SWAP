@@ -9,37 +9,27 @@ void append(t_stack_node **headRef, int nbr)
         printf("memory allocation failed\n");
         return;
     }
+
     newNode->nbr = nbr;
     newNode->next = NULL;
-    // prev
+    newNode->prev = NULL;
+
 
     if (*headRef == NULL)
     {
         *headRef = newNode;
         return;
     }
+    
     t_stack_node *lastNode = *headRef;
-
     while (lastNode->next != NULL)
     {   
-        lastNode->next = newNode;
+        lastNode = lastNode->next;
     }
 
     lastNode->next = newNode;
+    newNode->prev = lastNode;
 }
-
-t_stack_node* find_last_node(t_stack_node **headRef)
-{
-    if (headRef == NULL || *headRef == NULL)
-        return NULL;
-
-    t_stack_node *lastNode = *headRef;
-    while (lastNode->next != NULL)
-        lastNode = lastNode->next;
-    return (lastNode);
-}
-
-
 
 t_stack_node* create_list(int ac, char **av) {
     t_stack_node* head = NULL;
@@ -60,6 +50,8 @@ t_stack_node* create_list(int ac, char **av) {
             append(&head, nbr); 
             i++;
         }
+
+        free(result); // Free memory allocated by my_split
     }
     // If we have arguments already split
     else if (ac > 2)
