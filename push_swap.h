@@ -24,6 +24,7 @@ typedef struct s_stack_node
 #include "./initList.c"
 #include "./rotate.c"
 #include "./rev_rotate.c"
+#include "./push.c"
 
 
 // FUNCTIONS
@@ -48,9 +49,13 @@ t_stack_node* find_last_node(t_stack_node **headRef);
 
 
 // ACTIONS
+// rotate
 static void	rotate(t_stack_node **head);
 void    ra(t_stack_node **a);
 void    rb(t_stack_node **b);
+// push
+static void	push(t_stack_node **src, t_stack_node **dst);
+void debugPrintList(t_stack_node **head); 
 
 // static void     rev_rotate(t_stack_node **head);
 // t_stack_node* create_list(int ac, char **av, t_stack_node** head);
