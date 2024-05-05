@@ -25,6 +25,7 @@ typedef struct s_stack_node
 #include "./rotate.c"
 #include "./rev_rotate.c"
 #include "./push.c"
+#include "./swap.c"
 
 
 // FUNCTIONS
@@ -32,6 +33,7 @@ typedef struct s_stack_node
 char    *my_strncpy(char *s1, char *s2, int n);
 char    **my_split(char *str, char delimiter);
 static long my_atol(const char *s);
+int	ft_list_size(t_stack_node *begin_list);
 
 // UTILS PUSHSWAP
 void printList(t_stack_node **head);
@@ -56,6 +58,8 @@ void    rb(t_stack_node **b);
 // push
 static void	push(t_stack_node **src, t_stack_node **dst);
 void debugPrintList(t_stack_node **head); 
+// swap
+static void     swap(t_stack_node **head);
 
 // static void     rev_rotate(t_stack_node **head);
 // t_stack_node* create_list(int ac, char **av, t_stack_node** head);

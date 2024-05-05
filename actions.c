@@ -10,6 +10,13 @@
 // - le premier noeud ne pointe sur aucun noeud donc on met prev a null OK
 // - on met a jour le noeud precedent avant le dernier noeud de la pile
 
+int	ft_list_size(t_stack_node *begin_list)
+{
+	if (begin_list == 0)
+		return (0);
+	else
+		return (1 + ft_list_size(begin_list->next));
+}
 
 
 t_stack_node* find_last_node(t_stack_node **headRef)

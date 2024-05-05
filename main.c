@@ -33,20 +33,21 @@ int main(int ac, char **av)
 
     printf("stack a : ");
     printList(&a);
-    printf("stack b : ");
-    printList(&b);
+    swap(&b);
+    swap(&a);
     printf("\n");
-    
-
-    push(&a, &b);
-    printf("stack a after push : ");
+    printf("stack a after swap : ");
     printList(&a);
+
+    // push(&a, &b);
+    // printf("stack a after push : ");
+    // printList(&a);
+    // // printf("\n");
+    // // rb(&b);
+    // printf("stack b after push : ");
+    // printList(&b);
     // printf("\n");
-    // rb(&b);
-    printf("stack b after push : ");
-    printList(&b);
-    printf("\n");
-    debugPrintList(&b);
+    // debugPrintList(&b);
 
    // rev_rotate(&head);
 
