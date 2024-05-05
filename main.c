@@ -13,22 +13,22 @@ int main(int ac, char **av)
 {    
     t_stack_node* head = NULL;
     // t_stack_node* b = NULL;
-    t_stack_node* b = NULL;
+    // t_stack_node* b = NULL;
     t_stack_node* a = NULL;
     head = create_list(ac, av);
 
-    char *string = "10 23 56 89 19";
-    b = create_small_list(string);
+    // char *string = "10 23 56 89 19";
+    // b = create_small_list(string);
     a = create_stack_a(&head);
 
-    find_maxi(&b);
-
-    printf("stack a : ");
+    // printf("stack a : ");
     printList(&a);
-    swap(&b);
-    swap(&a);
-    printf("\n");
-    printf("stack a after swap : ");
+    // printf("\n");
+    // printf("stack a after swap : ");
+    // printList(&a);
+
+    sort_three(&a);
+
     printList(&a);
 
     return 0;

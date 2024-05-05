@@ -17,7 +17,6 @@ static t_stack_node *find_maxi(t_stack_node **head)
            
         current = current->next; 
     }
-    printf("max : %d", max_node->nbr);
     return (max_node);
 }
 

@@ -28,6 +28,7 @@ typedef struct s_stack_node
 #include "./actions/rev_rotate.c"
 #include "./actions/push.c"
 #include "./actions/swap.c"
+#include "./actions/sort_three.c"
 
 
 
@@ -77,5 +78,8 @@ static void     swap(t_stack_node **head);
 void    sa(t_stack_node **a);
 void    sb(t_stack_node **b);
 void	ss(t_stack_node **a, t_stack_node **b);
+
+// sort_three
+static void	sort_three(t_stack_node **a);
 
 #endif
