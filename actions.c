@@ -10,60 +10,6 @@
 // - le premier noeud ne pointe sur aucun noeud donc on met prev a null OK
 // - on met a jour le noeud precedent avant le dernier noeud de la pile
 
-int	ft_list_size(t_stack_node *begin_list)
-{
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
-}
-
-
-t_stack_node* find_last_node(t_stack_node **headRef)
-{
-    if (headRef == NULL || *headRef == NULL)
-        return NULL;
-
-    t_stack_node *lastNode = *headRef;
-    while (lastNode->next != NULL)
-        lastNode = lastNode->next;
-    return lastNode;
-}
-
-
-
-void printList(t_stack_node **head) {
-    
-    t_stack_node *current = *head; 
-    
-    while (current != NULL) {
-        printf("%d -> ", current->nbr); 
-        current = current->next; 
-    }
-    printf("NULL\n");
-}
-
-
-void display_prev_values(t_stack_node **head)
-{
-    if (head == NULL)
-    {
-        printf("The list is empty.\n");
-        return;
-    }
-
-    t_stack_node *currentNode = *head;
-
-    while (currentNode != NULL)
-    {
-        printf("Value stored in 'prev' for node %d: ", currentNode->nbr);
-        if (currentNode->prev != NULL)
-            printf("%d\n", currentNode->prev->nbr);
-        else
-            printf("NULL\n");
-        currentNode = currentNode->next;
-    }
-}
 
 
 // static void     rev_rotate(t_stack_node **head)
@@ -100,24 +46,3 @@ head previous = last node
 head next = null
 
 */
-
-// static t_stack_node *find_maxi(t_stack_node **head)
-// {
-//     t_stack_node *current = *head; 
-//     t_stack_node *max_node = NULL;
-    
-//     int max = 0; // a changer par INT_MIN
-
-//     while (current != NULL) {
-//         // printf("%d -> ", current->nbr); 
-//         if (current->nbr > max)
-//         {
-//             max = current->nbr;
-//             max_node = current;
-//         }
-           
-//         current = current->next; 
-//     }
-//     printf("max : %d", max_node->nbr);
-//     return (max_node);
-// }

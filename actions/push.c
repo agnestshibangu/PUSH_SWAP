@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	push(t_stack_node **src, t_stack_node **dst) 
 {
@@ -37,20 +37,4 @@ void    pba(t_stack_node **b, t_stack_node **a)
     push(b, a);
 }
 
-
-
-
-
-
-
-
-
-// void debugPrintList(t_stack_node **head) {
-
-//     t_stack_node *current = *head;
-//     while (current != NULL) {
-//         printf("Node value: %d, Prev: %d, Next: %d\n", current->nbr, (current->prev != NULL) ? current->prev->nbr : -1, (current->next != NULL) ? current->next->nbr : -1);
-//         current = current->next;
-//     }
-// }
 

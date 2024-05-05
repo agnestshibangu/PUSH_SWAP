@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void     swap(t_stack_node **head)
 {
@@ -27,4 +27,20 @@ static void     swap(t_stack_node **head)
     first_node->nbr = next->nbr;
     next->index = tmp_index;
     next->nbr = tmp_nbr;
+}
+
+void    sa(t_stack_node **a)
+{
+    swap(a);
+}
+
+void    sb(t_stack_node **b)
+{
+    swap(b);
+}
+
+void	ss(t_stack_node **a, t_stack_node **b) 
+{
+	swap(a);
+	swap(b);
 }

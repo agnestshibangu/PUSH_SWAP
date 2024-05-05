@@ -9,16 +9,6 @@
 
 // coder les instructions de base
 
-
-void debugPrintList(t_stack_node **head) {
-
-    t_stack_node *current = *head;
-    while (current != NULL) {
-        printf("Node value: %d, Prev: %d, Next: %d\n", current->nbr, (current->prev != NULL) ? current->prev->nbr : -1, (current->next != NULL) ? current->next->nbr : -1);
-        current = current->next;
-    }
-}
-
 int main(int ac, char **av)
 {    
     t_stack_node* head = NULL;
@@ -31,6 +21,8 @@ int main(int ac, char **av)
     b = create_small_list(string);
     a = create_stack_a(&head);
 
+    find_maxi(&b);
+
     printf("stack a : ");
     printList(&a);
     swap(&b);
@@ -38,25 +30,6 @@ int main(int ac, char **av)
     printf("\n");
     printf("stack a after swap : ");
     printList(&a);
-
-    // push(&a, &b);
-    // printf("stack a after push : ");
-    // printList(&a);
-    // // printf("\n");
-    // // rb(&b);
-    // printf("stack b after push : ");
-    // printList(&b);
-    // printf("\n");
-    // debugPrintList(&b);
-
-   // rev_rotate(&head);
-
-    //printList(&head);
-
-    // display_prev_values(&head);
-
-    
-    // find_maxi(&head);
 
     return 0;
 }
