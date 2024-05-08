@@ -1,14 +1,34 @@
 #include "push_swap.h"
 
+static t_stack_node *find_min(t_stack_node **head)
+{
+    t_stack_node *current = *head; 
+    t_stack_node *min_node = NULL;
+    
+    int min = LONG_MAX; // a changer par INT_MIN
+
+    while (current != NULL) {
+        // printf("%d -> ", current->nbr); 
+        if (current->nbr < min)
+        {
+            min = current->nbr;
+            min_node = current;
+        }
+           
+        current = current->next; 
+    }
+    return (min_node);
+}
+
+
 static t_stack_node *find_maxi(t_stack_node **head)
 {
     t_stack_node *current = *head; 
     t_stack_node *max_node = NULL;
     
-    int max = 0; // a changer par INT_MIN
+    int max = LONG_MIN; // a changer par INT_MIN
 
     while (current != NULL) {
-        // printf("%d -> ", current->nbr); 
         if (current->nbr > max)
         {
             max = current->nbr;
@@ -20,15 +40,21 @@ static t_stack_node *find_maxi(t_stack_node **head)
     return (max_node);
 }
 
-int	ft_list_size(t_stack_node *begin_list)
+int ft_list_size(t_stack_node **head)
 {
-	if (begin_list == 0)
-		return (0);
-	else
-		return (1 + ft_list_size(begin_list->next));
+    t_stack_node *current = *head; 
+    int size;
+
+    size = 0;
+    while (current != NULL) {
+        size++;
+        current = current->next; 
+    }
+    printf("NULL\n");
+
+    return (size);
 }
-
-
+    
 static t_stack_node* find_last_node(t_stack_node **headRef)
 {
     if (headRef == NULL || *headRef == NULL)

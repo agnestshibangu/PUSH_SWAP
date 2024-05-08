@@ -14,9 +14,9 @@ typedef struct s_stack_node
 {
     int     nbr;
     int     index;
+    struct s_stack_node *target_node;
     struct s_stack_node *next;
     struct s_stack_node *prev;
-
 }   t_stack_node;
 
 #include "./split.c"
@@ -29,6 +29,8 @@ typedef struct s_stack_node
 #include "./actions/push.c"
 #include "./actions/swap.c"
 #include "./actions/sort_three.c"
+#include "./algo/push_swap.c"
+
 
 
 
@@ -39,9 +41,10 @@ char    **my_split(char *str, char delimiter);
 static long my_atol(const char *s);
 
 // UTILS PUSHSWAP
-static t_stack_node *find_maxi(t_stack_node **head);
+// static t_stack_node *find_maxi(t_stack_node **head);
+static t_stack_node *find_min(t_stack_node **head);
 static t_stack_node* find_last_node(t_stack_node **headRef);
-int	ft_list_size(t_stack_node *begin_list);
+int	ft_list_size(t_stack_node **head);
 
 // DEBBUG
 void printList(t_stack_node **head);
@@ -80,6 +83,11 @@ void    sb(t_stack_node **b);
 void	ss(t_stack_node **a, t_stack_node **b);
 
 // sort_three
-static void	sort_three(t_stack_node **a);
+// static void	sort_three(t_stack_node **a);
+
+// push swap algo 
+// void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b);
+void assign_target_node(t_stack_node **a, t_stack_node **b);
+void push_swap(t_stack_node **a, t_stack_node **b);
 
 #endif

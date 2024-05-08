@@ -11,28 +11,43 @@
 
 int main(int ac, char **av)
 {    
+    // init pointers to NULL to avoid segfault
     t_stack_node* head = NULL;
-    // t_stack_node* b = NULL;
-    // t_stack_node* b = NULL;
+    t_stack_node* b = NULL;
     t_stack_node* a = NULL;
     head = create_list(ac, av);
 
-    // char *string = "10 23 56 89 19";
-    // b = create_small_list(string);
+    char *string = "1 2 3 4";
+    b = create_small_list(string);
     a = create_stack_a(&head);
 
-    // printf("stack a : ");
+    printf("stack a : ");
     printList(&a);
-    // printf("\n");
-    // printf("stack a after swap : ");
-    // printList(&a);
+    printf("\n");
+    printf("stack b : ");
+    printList(&b);
+
+    printf("\n");
+    printf("\n");
+
+    // push_a_nodes_to_b(&a, &b);
+
+    printf("stack a : ");
+    printList(&a);
+    printf("\n");
+    printf("stack b : ");
+    printList(&b);
 
     sort_three(&a);
-
+    printf("stack a after sort three : ");
     printList(&a);
+
+
+    t_stack_node *min_node = find_min(&a);
+    printf("The smallest number is: %d\n", min_node->nbr);
+
+    assign_target_node(&a, &b);
+    // printf("size %d", ft_list_size(&a));
 
     return 0;
 }
-
-
-
