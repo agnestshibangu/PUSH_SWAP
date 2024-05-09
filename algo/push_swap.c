@@ -13,35 +13,31 @@ void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b)
 }
 
 // A DEBUGGER ! 
-void assign_target_node(t_stack_node **a, t_stack_node **b)
-{
-    t_stack_node *current_in_a;
-    // t_stack_node *target;
+void assign_target_node(t_stack_node **a, t_stack_node **b) {
+    t_stack_node *current_in_a = *a;
     long best_match;
 
-    best_match = LONG_MAX;
-
-    while (*b)
+    while (*b) 
     {
-        current_in_a = *a;
+        best_match = LONG_MAX; // Reset for each element in b
         while (current_in_a)
         {
-            if (current_in_a->nbr > (*b)->nbr
-                && current_in_a->nbr < best_match)
-            {
+            if (current_in_a->nbr > (*b)->nbr && current_in_a->nbr < best_match) {
                 best_match = current_in_a->nbr;
-                // target = current_in_a;
-                printf("%ld", best_match);
             }
             current_in_a = current_in_a->next;
+        }
+        current_in_a = *a; // Reset for next iteration over b
+        if (best_match != LONG_MAX) {
+            printf("best match : %ld\n", best_match);
+        }
+        else {
+            printf("No match found for %d\n", (*b)->nbr);
         }
         printf("-----\n");
         (*b) = (*b)->next;
     }
-
 }
-
-
 
 void push_swap(t_stack_node **a, t_stack_node **b)
 {
@@ -51,8 +47,6 @@ void push_swap(t_stack_node **a, t_stack_node **b)
    sort_three(a);
    // on definit un target node pour chaque node de b vers a
 
-
-    
     // t_stack_node *smallest;
     
     // return;
