@@ -40,7 +40,7 @@ static t_stack_node *find_maxi(t_stack_node **head)
     return (max_node);
 }
 
-int ft_list_size(t_stack_node **head)
+int list_size(t_stack_node **head)
 {
     t_stack_node *current = *head; 
     int size;

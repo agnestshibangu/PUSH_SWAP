@@ -21,33 +21,41 @@ int main(int ac, char **av)
     b = create_small_list(string);
     a = create_stack_a(&head);
 
-    printf("stack a : ");
-    printList(&a);
-    printf("\n");
-    printf("stack b : ");
-    printList(&b);
+    // printf("stack a : ");
+    // printList(&a);
+    // printf("\n");
+    // printf("stack b : ");
+    // printList(&b);
 
-    printf("\n");
-    printf("\n");
+    // printf("\n");
+    // printf("\n");
 
     // push_a_nodes_to_b(&a, &b);
 
-    printf("stack a : ");
-    printList(&a);
-    printf("\n");
-    printf("stack b : ");
-    printList(&b);
+    // printf("stack a : ");
+    // printList(&a);
+    // printf("\n");
+    // printf("stack b : ");
+    // printList(&b);
 
-    sort_three(&a);
-    printf("stack a after sort three : ");
-    printList(&a);
+    // sort_three(&a);
+    // printf("stack a after sort three : ");
+    // printList(&a);
 
 
-    t_stack_node *min_node = find_min(&a);
-    printf("The smallest number is: %d\n", min_node->nbr);
+    // t_stack_node *min_node = find_min(&a);
+    // printf("The smallest number is: %d\n", min_node->nbr);
 
     assign_target_node(&a, &b);
     // printf("size %d", ft_list_size(&a));
+
+    define_nodes_position(&a);
+
+    is_above_median(&a);
+     
+    define_push_cost(&a);
+
+    // define_cheapest(&a);
 
     return 0;
 }

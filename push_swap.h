@@ -12,8 +12,11 @@
 
 typedef struct s_stack_node
 {
-    int     nbr;
+    int     nbr; // a change par long !
     int     index;
+    int     push_cost;
+    int     position;
+    bool    above_median;
     struct s_stack_node *target_node;
     struct s_stack_node *next;
     struct s_stack_node *prev;
@@ -44,7 +47,7 @@ static long my_atol(const char *s);
 // static t_stack_node *find_maxi(t_stack_node **head);
 static t_stack_node *find_min(t_stack_node **head);
 static t_stack_node* find_last_node(t_stack_node **headRef);
-int	ft_list_size(t_stack_node **head);
+int	list_size(t_stack_node **head);
 
 // DEBBUG
 void printList(t_stack_node **head);
@@ -87,7 +90,11 @@ void	ss(t_stack_node **a, t_stack_node **b);
 
 // push swap algo 
 // void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b);
+// // void    define_push_cost(t_stack_node **head);
+// // void    define_nodes_position(t_stack_node **head);
+void    is_above_median(t_stack_node **head);
 void assign_target_node(t_stack_node **a, t_stack_node **b);
+// static t_stack_node define_cheapest(t_stack_node **head);
 void push_swap(t_stack_node **a, t_stack_node **b);
 
 #endif

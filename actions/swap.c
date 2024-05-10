@@ -11,7 +11,7 @@ static void     swap(t_stack_node **head)
     first_node = *head;
     next = first_node->next;
     
-    if (ft_list_size(head) < 2)
+    if (list_size(head) < 2)
     {
         printf("error : list too small");
         return ;
