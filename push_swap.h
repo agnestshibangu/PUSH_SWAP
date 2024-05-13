@@ -17,6 +17,7 @@ typedef struct s_stack_node
     int     push_cost;
     int     position;
     bool    above_median;
+    bool    cheapest;
     struct s_stack_node *target_node;
     struct s_stack_node *next;
     struct s_stack_node *prev;
@@ -33,9 +34,7 @@ typedef struct s_stack_node
 #include "./actions/swap.c"
 #include "./actions/sort_three.c"
 #include "./algo/push_swap.c"
-
-
-
+#include "./algo/push_swap2.c"
 
 // FUNCTIONS
 // UTILS
@@ -53,8 +52,6 @@ int	list_size(t_stack_node **head);
 void printList(t_stack_node **head);
 void display_prev_values(t_stack_node **head);
 void debugPrintList(t_stack_node **head); 
-
-
 
 // INIT
 t_stack_node* create_small_list(char *av);
@@ -88,13 +85,30 @@ void	ss(t_stack_node **a, t_stack_node **b);
 // sort_three
 // static void	sort_three(t_stack_node **a);
 
-// push swap algo 
+// [[[algo]]] ---> (push_swap.c) 
 // void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b);
-// // void    define_push_cost(t_stack_node **head);
-// // void    define_nodes_position(t_stack_node **head);
+// define the push cost for a and b
+void    define_push_cost(t_stack_node **head);
+void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b);
+// define the position for a and b
+void    define_nodes_position(t_stack_node **head);
+void    define_nodes_position_a_b(t_stack_node **a, t_stack_node **b);
+// for both stacks, define which nodes are above the median in a and b
 void    is_above_median(t_stack_node **head);
+void    define_is_above_median_a_b(t_stack_node **a, t_stack_node **b);
+// assigne a target for b nodes
 void assign_target_node(t_stack_node **a, t_stack_node **b);
-// static t_stack_node define_cheapest(t_stack_node **head);
+// define cheapest
+static t_stack_node* define_cheapest(t_stack_node **head);
+void define_cheapest_in_both_stack(t_stack_node **a, t_stack_node **b);
+// check the two cheapest nodes in a and b
+void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b);
 void push_swap(t_stack_node **a, t_stack_node **b);
+
+// // [[[algo]]] ---> (push_swap2.c) 
+void move_cheapest_to_top(t_stack_node **head);
+void determine_next_move(t_stack_node **a, t_stack_node **b);
+
+
 
 #endif

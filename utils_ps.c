@@ -14,7 +14,6 @@ static t_stack_node *find_min(t_stack_node **head)
             min = current->nbr;
             min_node = current;
         }
-           
         current = current->next; 
     }
     return (min_node);

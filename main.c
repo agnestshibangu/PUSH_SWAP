@@ -3,12 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-// gerer les inputs en arguments séparés ou en liste OK
-
-// remplir la liste chainée avec les arguments passés en paramètres OK
-
-// coder les instructions de base
-
 int main(int ac, char **av)
 {    
     // init pointers to NULL to avoid segfault
@@ -21,11 +15,11 @@ int main(int ac, char **av)
     b = create_small_list(string);
     a = create_stack_a(&head);
 
-    // printf("stack a : ");
-    // printList(&a);
-    // printf("\n");
-    // printf("stack b : ");
-    // printList(&b);
+    printf("JE SUIS ICI stack a : "); 
+    printList(&a);
+    printf("\n");
+    printf("stack b : ");
+    printList(&b);
 
     // printf("\n");
     // printf("\n");
@@ -47,15 +41,33 @@ int main(int ac, char **av)
     // printf("The smallest number is: %d\n", min_node->nbr);
 
     assign_target_node(&a, &b);
-    // printf("size %d", ft_list_size(&a));
 
-    define_nodes_position(&a);
+    define_nodes_position_a_b(&a, &b);
 
-    is_above_median(&a);
-     
-    define_push_cost(&a);
+    define_push_cost_a_b(&a, &b);
 
-    // define_cheapest(&a);
+   
+
+    // // define_cheapest(&a);
+    define_cheapest_a_b(&a, &b);
+    
+    printf("stack a : ");
+    printList(&a);
+    printf("\n");
+    printf("stack b : ");
+    printList(&b);
+
+    check_two_cheapest_after_def(&a, &b);
+
+    determine_next_move(&a, &b);
+
+    printf("AFTER FIRST PUSH\n");
+    printf("stack a : ");
+    printList(&a);
+    printf("\n");
+    printf("stack b : ");
+    printList(&b);
+
 
     return 0;
 }
