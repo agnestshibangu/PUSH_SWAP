@@ -52,6 +52,7 @@ int	list_size(t_stack_node **head);
 void printList(t_stack_node **head);
 void display_prev_values(t_stack_node **head);
 void debugPrintList(t_stack_node **head); 
+int if_list_is_sorted(t_stack_node **head);
 
 // INIT
 t_stack_node* create_small_list(char *av);

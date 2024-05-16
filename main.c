@@ -21,6 +21,9 @@ int main(int ac, char **av)
     printf("stack b : ");
     printList(&b);
 
+    // if_list_is_sorted(&a);
+    display_prev_values(&a);
+
     // printf("\n");
     // printf("\n");
 
@@ -40,33 +43,33 @@ int main(int ac, char **av)
     // t_stack_node *min_node = find_min(&a);
     // printf("The smallest number is: %d\n", min_node->nbr);
 
-    assign_target_node(&a, &b);
+    // assign_target_node(&a, &b);
 
-    define_nodes_position_a_b(&a, &b);
+    // define_nodes_position_a_b(&a, &b);
 
-    define_push_cost_a_b(&a, &b);
+    // define_push_cost_a_b(&a, &b);
 
    
 
     // // define_cheapest(&a);
-    define_cheapest_a_b(&a, &b);
+    // define_cheapest_a_b(&a, &b);
     
-    printf("stack a : ");
-    printList(&a);
-    printf("\n");
-    printf("stack b : ");
-    printList(&b);
+    // printf("stack a : ");
+    // printList(&a);
+    // printf("\n");
+    // printf("stack b : ");
+    // printList(&b);
 
-    check_two_cheapest_after_def(&a, &b);
+    // check_two_cheapest_after_def(&a, &b);
 
-    determine_next_move(&a, &b);
+    // determine_next_move(&a, &b);
 
-    printf("AFTER FIRST PUSH\n");
-    printf("stack a : ");
-    printList(&a);
-    printf("\n");
-    printf("stack b : ");
-    printList(&b);
+    // printf("AFTER FIRST PUSH\n");
+    // printf("stack a : ");
+    // printList(&a);
+    // printf("\n");
+    // printf("stack b : ");
+    // printList(&b);
 
 
     return 0;

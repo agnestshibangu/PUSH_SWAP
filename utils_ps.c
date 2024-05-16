@@ -5,7 +5,7 @@ static t_stack_node *find_min(t_stack_node **head)
     t_stack_node *current = *head; 
     t_stack_node *min_node = NULL;
     
-    int min = LONG_MAX; // a changer par INT_MIN
+    long int min = LONG_MAX; // a changer par INT_MIN
 
     while (current != NULL) {
         // printf("%d -> ", current->nbr); 
@@ -25,7 +25,7 @@ static t_stack_node *find_maxi(t_stack_node **head)
     t_stack_node *current = *head; 
     t_stack_node *max_node = NULL;
     
-    int max = LONG_MIN; // a changer par INT_MIN
+    long int max = LONG_MIN; // a changer par INT_MIN
 
     while (current != NULL) {
         if (current->nbr > max)

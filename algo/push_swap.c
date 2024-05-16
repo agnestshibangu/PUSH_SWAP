@@ -193,7 +193,23 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     // t_stack_node *smallest;
 
     // on definit un push cost pour chaque node 
+    define_push_cost_a_b(a, b);
 
+    // on definit le cheapest pour chaque stack a et b
+    define_cheapest_a_b(a, b);
+
+    // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
+    // avec move cheapest to cost qui est appele dans la fonction determine next move
+    // determine_next_move(a, b);
+
+    // on verifie si la liste est triee
+
+
+    // // si c'est le cas on quitte la fonction
+
+    // // sinon, on continue 
+
+    // on reinitialise les nouvelles positions et les nouveaux cout et 
     
     // return;
 }
