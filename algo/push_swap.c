@@ -218,15 +218,15 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     // une fois les noeuds les moins chers en haut, on les push fron stack B to stack A
     pba(a, b);
     // // on verifie si la liste est triee
-    printf("on verifie l'etat de la liste apres le push\n");
+    printf(" == on verifie l'etat de la liste apres le push\n");
     printf_for_shell_debbug(a, b);
 
-
-
     // // si c'est le cas on quitte la fonction
+    reinitialise_before_next_move(a, b);
+    reinitialise_before_next_move(a, b);
+    reinitialise_before_next_move(a, b);
 
     // // sinon, on continue 
-
     // on reinitialise les nouvelles positions et les nouveaux cout et 
     
     // return;

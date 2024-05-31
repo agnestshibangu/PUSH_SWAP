@@ -45,3 +45,15 @@ void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b)
 }
 
 
+void reinitialise_before_next_move(t_stack_node **a, t_stack_node **b)
+{   
+    assign_target_node(a, b);
+    define_nodes_position_a_b(a, b);
+    define_is_above_median_a_b(a, b);
+    define_push_cost_a_b(a, b);
+    define_cheapest_a_b(a, b);
+    move_both_cheapest_to_top(a, b);
+    printf("---------------FINAL PUSH-----------------------");
+    pba(a, b);
+    printf_for_shell_debbug(a, b);
+}
