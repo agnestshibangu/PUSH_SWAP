@@ -1,6 +1,4 @@
 #include "push_swap.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 char    *my_strncpy(char *s1, char *s2, int n)
 {

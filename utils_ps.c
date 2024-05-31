@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static t_stack_node *find_min(t_stack_node **head)
+t_stack_node *find_min(t_stack_node **head)
 {
     t_stack_node *current = *head; 
     t_stack_node *min_node = NULL;
@@ -20,7 +20,7 @@ static t_stack_node *find_min(t_stack_node **head)
 }
 
 
-static t_stack_node *find_maxi(t_stack_node **head)
+t_stack_node *find_maxi(t_stack_node **head)
 {
     t_stack_node *current = *head; 
     t_stack_node *max_node = NULL;
@@ -49,12 +49,10 @@ int list_size(t_stack_node **head)
         size++;
         current = current->next; 
     }
-    printf("NULL\n");
-
     return (size);
 }
     
-static t_stack_node* find_last_node(t_stack_node **headRef)
+t_stack_node* find_last_node(t_stack_node **headRef)
 {
     if (headRef == NULL || *headRef == NULL)
         return NULL;

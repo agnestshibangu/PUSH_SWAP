@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-static void	rotate(t_stack_node **head)
+void	rotate(t_stack_node **head)
 {
     t_stack_node    *last_node;
 
@@ -17,15 +17,18 @@ static void	rotate(t_stack_node **head)
 void    ra(t_stack_node **a)
 {
     rotate(a);
+    printf("ra\n");
 }
 
 void    rb(t_stack_node **b)
 {
     rotate(b);
+    printf("rb\n");
 }
 
 void    rr(t_stack_node **a, t_stack_node **b)
 {
     rotate(a);
     rotate(b);
+    printf("rr\n");
 }

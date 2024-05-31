@@ -35,16 +35,17 @@ void assign_target_node(t_stack_node **a, t_stack_node **b) {
         current_in_a = *a; // Reset for next iteration over b
         if (best_match != LONG_MAX) {
             current_in_b->target_node = target_node;
-            printf("le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
+            printf("  le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
         }
         else if (best_match == LONG_MAX)
         {
             current_in_b->target_node = find_min(a);
-            printf("valeur maximale, le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
+            printf("  !PAS DE VALEUR PLUS GRANDE DONC MIN! le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
         }
-        printf("-----\n");
+        printf("...............\n");
         current_in_b = current_in_b->next;
     }
+    printf("\n\n");
 }
 
 void    define_nodes_position(t_stack_node **head)
@@ -56,18 +57,17 @@ void    define_nodes_position(t_stack_node **head)
     current = *head;
     while (current != NULL) {
         current->position = i;
-        printf("NODE %d at postion %d \n", current->nbr, current->position);
+        printf("  NODE %d at postion %d \n", current->nbr, current->position);
         i++;
         current = current->next;
     }
+    printf("\n");
 }
 
 void    define_nodes_position_a_b(t_stack_node **a, t_stack_node **b)
 {
     define_nodes_position(a);
     define_nodes_position(b);
-
-    printf("define position done\n");
 }
 
 
@@ -117,12 +117,12 @@ void    define_push_cost(t_stack_node **head)
         if (current->above_median == true)
         {
             current->push_cost = current->position;
-            printf("the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
         else if (current->above_median == false) 
         {
             current->push_cost = len - current->position;
-            printf("the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
         current = current->next;
     }
@@ -131,13 +131,13 @@ void    define_push_cost(t_stack_node **head)
 
 void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b)
 {
+    printf("\n\n define push cost for a \n\n");
     define_push_cost(a);
+    printf("\n\n define push cost for a \n\n");
     define_push_cost(b);
-    printf("define push cost for a and b done\n");
-
 }
 
-static t_stack_node* define_cheapest(t_stack_node **head)
+t_stack_node* define_cheapest(t_stack_node **head)
 {
     t_stack_node *current = *head; 
     t_stack_node *cheapest_node;
@@ -184,19 +184,40 @@ void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b)
 
 void push_swap(t_stack_node **a, t_stack_node **b)
 {
+    printf(" == initial state \n");
+    printf_for_shell_debbug(a, b);
+
     // pushing node from a to b until there is only 3 nodes in a 
+    printf(" == pushing nodes from a to b until 3\n");
     push_a_nodes_to_b(a, b);
+    printf_for_shell_debbug(a, b);
+    
     // sort three for the a stack
+    printf(" == sort 3 on a stack\n");
     sort_three(a);
+    printf_for_shell_debbug(a, b);
+
     // on definit un target node pour chaque node de b vers a
+    printf(" == assign a target for each node b to a\n\n");
     assign_target_node(a, b);
     // t_stack_node *smallest;
 
-    // on definit un push cost pour chaque node 
-    define_push_cost_a_b(a, b);
+    // on definit la position des nodes pour pouvoir definir leur push cost
+    printf(" == define positions in a and b\n\n");
+    define_nodes_position_a_b(a, b);
+
+    // on definit position des nodes par rapport a la mediane 
+    printf(" == define positions in a and b according to mediane\n\n");
+    define_is_above_median_a_b(a, b);
+
+    // on definit un push cost pour chaque node
+    // printf(" == define a push cost for each node\n");
+    // define_push_cost_a_b(a, b);
+    //  printf_for_shell_debbug(a, b);
+    
 
     // on definit le cheapest pour chaque stack a et b
-    define_cheapest_a_b(a, b);
+    //define_cheapest_a_b(a, b);
 
     // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
     // avec move cheapest to cost qui est appele dans la fonction determine next move

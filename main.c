@@ -1,7 +1,12 @@
 #include "push_swap.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+
+void print_stack_for_visualizer(t_stack_node *stack) {
+    t_stack_node *current = stack;
+    while (current) {
+        printf("%d\n", current->nbr);
+        current = current->next;
+    }
+}
 
 int main(int ac, char **av)
 {    
@@ -11,29 +16,31 @@ int main(int ac, char **av)
     t_stack_node* a = NULL;
     head = create_list(ac, av);
 
-    char *string = "1 2 3 4";
+    char *string = "";
     b = create_small_list(string);
     a = create_stack_a(&head);
 
-    printf("JE SUIS ICI stack a : "); 
-    printList(&a);
-    printf("\n");
-    printf("stack b : ");
-    printList(&b);
-
     // if_list_is_sorted(&a);
-    display_prev_values(&a);
+    // printf("display prev values of STACK A : \n"); 
+    // display_prev_values(&a);
 
     // printf("\n");
     // printf("\n");
 
-    // push_a_nodes_to_b(&a, &b);
-
-    // printf("stack a : ");
-    // printList(&a);
+    // VISUALIZER ----------------------------------------------------------------------------------------------------
+    // push_swap(&a, &b);
+    // int i = 1;
+    // while (av[i])
+    // {
+    //     printf("%s ", av[i]);
+    //     i++;
+    // }
     // printf("\n");
-    // printf("stack b : ");
-    // printList(&b);
+    push_swap(&a, &b);
+    //sort_three(&a);
+
+
+    // print_stack_for_visualizer(&a);
 
     // sort_three(&a);
     // printf("stack a after sort three : ");

@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-static void     rev_rotate(t_stack_node **head)
+void     rev_rotate(t_stack_node **head)
 {
     t_stack_node	*last; //To store the pointer to the last node
 
@@ -18,15 +18,18 @@ static void     rev_rotate(t_stack_node **head)
 void    rra(t_stack_node **a)
 {
     rev_rotate(a);
+    printf("rra\n");
 }
 
 void    rrb(t_stack_node **b)
 {
     rev_rotate(b);
+    printf("rrb\n");
 }
 
 void    rrr(t_stack_node **a, t_stack_node **b)
 {
     rev_rotate(a);
     rev_rotate(b);
+    printf("rrr\n");
 }

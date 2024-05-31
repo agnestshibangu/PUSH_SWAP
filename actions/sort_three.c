@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-static void	sort_three(t_stack_node **a)
+void	sort_three(t_stack_node **a)
 {
     t_stack_node* max;
 
@@ -9,18 +9,15 @@ static void	sort_three(t_stack_node **a)
     // printf("nbr of max : %d\n", max->nbr);
     if (*a == max)
     {
-        printf("rra\n");
         ra(a);
     }
        
     else if ((*a)->next == max)
     {
-        printf("rra\n");
         rra(a);
     }   
     if ((*a)->nbr > (*a)->next->nbr)
     {
-        printf("sa\n");
         sa(a);
     }   
 }

@@ -4,7 +4,7 @@ void move_cheapest_to_top(t_stack_node **head)
 {
     t_stack_node *cheapest_node = define_cheapest(head);
 
-    if (cheapest_node->cheapest == true)
+    if (cheapest_node == *head)
         return;
 
     while (cheapest_node->cheapest == false)

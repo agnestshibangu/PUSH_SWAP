@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static long my_atol(const char *s)
+long my_atol(const char *s)
 {
     long res;
     int sign;
@@ -102,6 +102,8 @@ t_stack_node* create_small_list(char *av) {
         return NULL;
     
     int i = 0;
+    if (av == NULL)
+        return (NULL);
     while (result[i])
     {
         int nbr = my_atol(result[i]);

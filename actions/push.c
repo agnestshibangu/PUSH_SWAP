@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-static void	push(t_stack_node **src, t_stack_node **dst) 
+void	    push(t_stack_node **src, t_stack_node **dst) 
 {
     t_stack_node *top_src; // node
 
@@ -29,12 +29,14 @@ static void	push(t_stack_node **src, t_stack_node **dst)
 void    pab(t_stack_node **a, t_stack_node **b)
 {
     push(a, b);
+    printf("pa");
 }
 
 // push b vers a
 void    pba(t_stack_node **b, t_stack_node **a)
 {
     push(b, a);
+    printf("pb");
 }
 
 
