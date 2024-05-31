@@ -90,7 +90,6 @@ void    is_above_median(t_stack_node **head)
             current->above_median = false;
         current = current->next;
     }
-
     current = *head;
     // printf part
     while (current != NULL) {
@@ -101,10 +100,9 @@ void    is_above_median(t_stack_node **head)
 
 void    define_is_above_median_a_b(t_stack_node **a, t_stack_node **b)
 {
-    define_nodes_position(a);
-    define_nodes_position(b);
-
-    printf("define position done for a and b\n");
+    is_above_median(a);
+    is_above_median(b);
+    printf("\n");
 }
 
 void    define_push_cost(t_stack_node **head)
@@ -127,7 +125,6 @@ void    define_push_cost(t_stack_node **head)
         current = current->next;
     }
 }
-
 
 void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b)
 {
@@ -207,17 +204,18 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     define_nodes_position_a_b(a, b);
 
     // on definit position des nodes par rapport a la mediane 
-    printf(" == define positions in a and b according to mediane\n\n");
+    printf(" == define positions in a and b according to median\n\n");
     define_is_above_median_a_b(a, b);
 
     // on definit un push cost pour chaque node
-    // printf(" == define a push cost for each node\n");
-    // define_push_cost_a_b(a, b);
-    //  printf_for_shell_debbug(a, b);
+    printf(" == define a push cost for each node\n");
+    define_push_cost_a_b(a, b);
+    // printf_for_shell_debbug(a, b);
     
-
     // on definit le cheapest pour chaque stack a et b
-    //define_cheapest_a_b(a, b);
+    printf(" == define the cheapest for a and b\n");
+    define_cheapest_a_b(a, b);
+    check_two_cheapest_after_def(a, b);
 
     // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
     // avec move cheapest to cost qui est appele dans la fonction determine next move
