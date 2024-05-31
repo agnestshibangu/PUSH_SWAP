@@ -93,7 +93,7 @@ void    is_above_median(t_stack_node **head)
     current = *head;
     // printf part
     while (current != NULL) {
-        printf("is the node %d above median ? %d\n", current->nbr, current->above_median);
+        printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
         current = current->next;
     }
 }
@@ -148,14 +148,7 @@ t_stack_node* define_cheapest(t_stack_node **head)
             cheapest = current->push_cost;
             cheapest_node = current;
             current->cheapest = true;
-            // printf("current cheapest node : %d\n", cheapest_node->nbr);
         }
-        // else if (current->push_cost == cheapes)
-        // {
-        //     // If there's another node with the same cheapest cost, add it to the list
-        //     current->next_cheapest = cheapests;
-        //     cheapest_nodes = current;
-        // }
         current = current->next;
     }
     return (cheapest_node);
@@ -165,18 +158,16 @@ void    define_cheapest_a_b(t_stack_node **a, t_stack_node **b)
 {
     define_cheapest(a);
     define_cheapest(b);
-    printf("define cheapest in a and b done\n");
 }
-
 
 void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b)
 {
     t_stack_node *cheapest_a = define_cheapest(a);
     t_stack_node *cheapest_b = define_cheapest(b);
-    
-    printf("STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
-    printf("STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
-
+    printf("\n");
+    printf("  STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
+    printf("  STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
+    printf("\n");
 }
 
 void push_swap(t_stack_node **a, t_stack_node **b)
@@ -210,6 +201,7 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     // on definit un push cost pour chaque node
     printf(" == define a push cost for each node\n");
     define_push_cost_a_b(a, b);
+    printf_for_shell_debbug(a, b);
     // printf_for_shell_debbug(a, b);
     
     // on definit le cheapest pour chaque stack a et b
@@ -218,10 +210,17 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     check_two_cheapest_after_def(a, b);
 
     // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
+    printf(" == move cheapest of a and b to top\n");
     // avec move cheapest to cost qui est appele dans la fonction determine next move
-    // determine_next_move(a, b);
+    move_both_cheapest_to_top(a, b);
+    printf_for_shell_debbug(a, b);
 
-    // on verifie si la liste est triee
+    // une fois les noeuds les moins chers en haut, on les push fron stack B to stack A
+    pba(a, b);
+    // // on verifie si la liste est triee
+    printf("on verifie l'etat de la liste apres le push\n");
+    printf_for_shell_debbug(a, b);
+
 
 
     // // si c'est le cas on quitte la fonction

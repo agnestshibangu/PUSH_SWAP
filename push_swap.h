@@ -64,7 +64,7 @@ void    rrr(t_stack_node **a, t_stack_node **b);
 // push
 void	push(t_stack_node **src, t_stack_node **dst);
 void    pab(t_stack_node **a, t_stack_node **b);
-void    pba(t_stack_node **b, t_stack_node **a);
+void    pba(t_stack_node **a, t_stack_node **b);
 // swap
 void     swap(t_stack_node **head);
 void    sa(t_stack_node **a);
@@ -75,7 +75,7 @@ void	ss(t_stack_node **a, t_stack_node **b);
 void	sort_three(t_stack_node **a);
 
 // [[[algo]]] ---> (push_swap.c) 
-void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b);
+void    push_a_nodes_to_b(t_stack_node **a, t_stack_node **b);
 // define the push cost for a and b
 void    define_push_cost(t_stack_node **head);
 void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b);
@@ -96,6 +96,7 @@ void push_swap(t_stack_node **a, t_stack_node **b);
 
 // // [[[algo]]] ---> (push_swap2.c) 
 void move_cheapest_to_top(t_stack_node **head);
-void determine_next_move(t_stack_node **a, t_stack_node **b);
+void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b);
+void once_on_top_push_b_to_a(t_stack_node **a, t_stack_node **b);
 
 #endif

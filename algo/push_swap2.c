@@ -7,7 +7,7 @@ void move_cheapest_to_top(t_stack_node **head)
     if (cheapest_node == *head)
         return;
 
-    while (cheapest_node->cheapest == false)
+    while ((*head) != cheapest_node)
         {
             if (cheapest_node->above_median == true)
             {
@@ -20,35 +20,28 @@ void move_cheapest_to_top(t_stack_node **head)
         }
 }
 
-void determine_next_move(t_stack_node **a, t_stack_node **b)
+void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b)
 {
     t_stack_node *cheapest_a = define_cheapest(a);
     t_stack_node *cheapest_b = define_cheapest(b);
     
-    printf("STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
-    printf("STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
+    printf("\n");
+    printf("  STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
+    printf("  STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
 
-    if (cheapest_a->cheapest == false && cheapest_b->cheapest == false)
+    if (!cheapest_a->cheapest && !cheapest_b->cheapest)
     {
         move_cheapest_to_top(a);
         move_cheapest_to_top(b);
     }
-    // si le cheapest n'est pas en haut de la pile
-    else if (cheapest_a->cheapest == false && cheapest_b->cheapest == true)
+    else if (!cheapest_a->cheapest && cheapest_b->cheapest)
     {
-       move_cheapest_to_top(a);
-       pba(b, a);
+        move_cheapest_to_top(a);
     }
-    else if (cheapest_a->cheapest == true && cheapest_b->cheapest == false)
+    else if (cheapest_a->cheapest && !cheapest_b->cheapest)
     {
-       move_cheapest_to_top(b);
-       pba(b, a);
+        move_cheapest_to_top(b);
     }
-    else if (cheapest_a->cheapest == true && cheapest_b->cheapest == true)
-    {
-        pba(b, a);
-        printf("push top node of b on top of a");
-    } 
-    
 }
+
 

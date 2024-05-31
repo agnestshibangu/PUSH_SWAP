@@ -33,7 +33,7 @@ void    pab(t_stack_node **a, t_stack_node **b)
 }
 
 // push b vers a
-void    pba(t_stack_node **b, t_stack_node **a)
+void    pba(t_stack_node **a, t_stack_node **b)
 {
     push(b, a);
     printf("pb");
