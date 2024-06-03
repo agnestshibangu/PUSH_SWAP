@@ -12,12 +12,12 @@ SRC		= 	actions/push.c \
 			actions/rotate.c \
 			actions/sort_three.c \
 			actions/swap.c \
+			algo/assign_position_target.c \
+			algo/define_cost.c \
+			algo/move_nodes_to_top.c \
 			algo/push_swap.c \
-			algo/push_swap2.c \
-			actions.c \
 			debbug_ps.c \
 			initList.c \
-			key_organisation.c \
 			main.c \
 			split.c \
 			utils_ps.c \
