@@ -15,6 +15,7 @@ typedef struct s_stack_node
     int     nbr; // a change par long !
     int     index;
     int     push_cost;
+    int     total_cost;
     int     position;
     bool    above_median;
     bool    cheapest;
@@ -93,13 +94,15 @@ t_stack_node* define_cheapest(t_stack_node **head);
 //void define_cheapest_in_both_stack(t_stack_node **a, t_stack_node **b);
 void    define_cheapest_a_b(t_stack_node **a, t_stack_node **b);
 // check the two cheapest nodes in a and b
-void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b);
+// void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b);
 void push_swap(t_stack_node **a, t_stack_node **b);
+void    define_combined_cost(t_stack_node **head);
 
 // // [[[algo]]] ---> (push_swap2.c)
 void reinitialise_before_next_move(t_stack_node **a, t_stack_node **b);
 void move_cheapest_to_top(t_stack_node **head);
-void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b);
+t_stack_node *find_target_to_move(t_stack_node **a, t_stack_node **b);
 void once_on_top_push_b_to_a(t_stack_node **a, t_stack_node **b);
+void move_cheapest_to_top_a(t_stack_node **a, t_stack_node **b);
 
 #endif

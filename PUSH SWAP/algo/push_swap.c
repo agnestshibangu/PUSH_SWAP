@@ -14,6 +14,7 @@ void push_a_nodes_to_b(t_stack_node **a, t_stack_node **b)
 
 // A DEBUGGER = target node pour le maximum est le min node !
 void assign_target_node(t_stack_node **a, t_stack_node **b) {
+
     t_stack_node *current_in_a = *a;
     t_stack_node *current_in_b = *b;
     t_stack_node *target_node;
@@ -24,6 +25,7 @@ void assign_target_node(t_stack_node **a, t_stack_node **b) {
     while (current_in_b) 
     {
         best_match = LONG_MAX; // Reset for each element in b
+        current_in_a = *a; // Reset for next iteration over b
         while (current_in_a)
         {
             if (current_in_a->nbr > current_in_b->nbr && current_in_a->nbr < best_match) {
@@ -32,16 +34,17 @@ void assign_target_node(t_stack_node **a, t_stack_node **b) {
             }
             current_in_a = current_in_a->next;
         }
-        current_in_a = *a; // Reset for next iteration over b
-        if (best_match != LONG_MAX) {
-            current_in_b->target_node = target_node;
-            printf("  le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
-        }
-        else if (best_match == LONG_MAX)
+        if (best_match == LONG_MAX)
         {
             current_in_b->target_node = find_min(a);
             printf("  !PAS DE VALEUR PLUS GRANDE DONC MIN! le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
         }
+        else 
+        {
+            current_in_b->target_node = target_node;
+            printf("le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
+        }
+            
         printf("...............\n");
         current_in_b = current_in_b->next;
     }
@@ -93,7 +96,7 @@ void    is_above_median(t_stack_node **head)
     current = *head;
     // printf part
     while (current != NULL) {
-       // printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
+       printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
         current = current->next;
     }
 }
@@ -115,22 +118,42 @@ void    define_push_cost(t_stack_node **head)
         if (current->above_median == true)
         {
             current->push_cost = current->position;
-            // printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
         else if (current->above_median == false) 
         {
             current->push_cost = len - current->position;
-            // printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
+        current = current->next;
+    }
+}
+
+void    define_combined_cost(t_stack_node **head)
+{
+    int len;
+    int total_cost;
+    t_stack_node *current = *head; 
+
+    total_cost = 0;
+    len = list_size(head);
+    while (current != NULL) { 
+        printf(" the cost of the current node %d is %d\n", current->nbr, current->push_cost);
+        printf(" the cost of the target node %d is %d\n", current->target_node->nbr, current->target_node->push_cost);
+        total_cost = current->push_cost + current->target_node->push_cost;
+        printf(" the total cost for the duo is %d\n", total_cost);
+        current->total_cost = total_cost;
+        printf(" SAVED total cost for the duo is %d in nbr %d\n", current->nbr, current->total_cost);
+        printf("\n\n");
         current = current->next;
     }
 }
 
 void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b)
 {
-    // printf("\n\n define push cost for a \n\n");
+    printf("\n\n define push cost for a \n\n");
     define_push_cost(a);
-    // printf("\n\n define push cost for a \n\n");
+    printf("\n\n define push cost for a \n\n");
     define_push_cost(b);
 }
 
@@ -143,32 +166,33 @@ t_stack_node* define_cheapest(t_stack_node **head)
     cheapest_node = NULL;
     cheapest = LONG_MAX;
     while (current != NULL) {   
-        if (current->push_cost < cheapest)
+        if (current->total_cost < cheapest)
         {
-            cheapest = current->push_cost;
+            cheapest = current->total_cost;
             cheapest_node = current;
             current->cheapest = true;
+            //printf("cheapest nbr %d with cost %d and target\n\n", current->nbr, current->total_cost);
         }
         current = current->next;
     }
     return (cheapest_node);
 }
 
-void    define_cheapest_a_b(t_stack_node **a, t_stack_node **b)
-{
-    define_cheapest(a);
-    define_cheapest(b);
-}
+// void    define_cheapest_a_b(t_stack_node **a, t_stack_node **b)
+// {
+//     define_cheapest(a);
+//     define_cheapest(b);
+// }
 
-void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b)
-{
-    t_stack_node *cheapest_a = define_cheapest(a);
-    t_stack_node *cheapest_b = define_cheapest(b);
-    printf("\n");
-    printf("  STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
-    printf("  STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
-    printf("\n");
-}
+// void check_two_cheapest_after_def(t_stack_node **a, t_stack_node **b)
+// {
+//     t_stack_node *cheapest_a = define_cheapest(a);
+//     t_stack_node *cheapest_b = define_cheapest(b);
+//     printf("\n");
+//     printf("  STACK A cheapest node %d  cheapest ? %d\n", cheapest_a->nbr, cheapest_a->cheapest);
+//     printf("  STACK B cheapest node %d  cheapest ? %d\n", cheapest_b->nbr, cheapest_b->cheapest);
+//     printf("\n");
+// }
 
 void push_swap(t_stack_node **a, t_stack_node **b)
 {
@@ -203,47 +227,50 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     define_push_cost_a_b(a, b);
     printf_for_shell_debbug(a, b);
     // printf_for_shell_debbug(a, b);
-    
-    // on definit le cheapest pour chaque stack a et b
-    printf(" == define the cheapest for a and b\n");
-    define_cheapest_a_b(a, b);
-    // check_two_cheapest_after_def(a, b);
 
+    // define cost 
+    printf(" == define combine push cost\n\n");
+    define_combined_cost(b);
+    
+    // // on definit le cheapest pour chaque stack a et b
+    printf(" == define the cheapest for b\n");
+    define_cheapest(b);
+
+    printf("\n\n");
     // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
     printf(" == move cheapest of a and b to top\n");
-    // avec move cheapest to cost qui est appele dans la fonction determine next move
-    move_both_cheapest_to_top(a, b);
-    printf_for_shell_debbug(a, b);
+    move_cheapest_to_top(b); // move cheapest of b to top
+    find_target_to_move(a, b); // find b's match
+    move_cheapest_to_top_a(a, b); // move b's match in a to top
 
-    // une fois les noeuds les moins chers en haut, on les push fron stack B to stack A
+    // // une fois les noeuds les moins chers en haut, on les push fron stack B to stack A
     pba(a, b);
-    // // on verifie si la liste est triee
-    printf(" == on verifie l'etat de la liste apres le push\n");
     printf_for_shell_debbug(a, b);
 
     while (*b)
     {
         reinitialise_before_next_move(a, b);
-        move_both_cheapest_to_top(a, b); 
-        pba(a, b);
+        // move_both_cheapest_to_top(a, b); 
+        // printf_for_shell_debbug(a, b);
+        // pba(a, b);
     }
    
-    t_stack_node *min_node = find_min(a);
-    if (min_node->above_median)
-    {
-        while (*a != min_node)
-        {
-            ra(a);
-        }
-    }
-    else 
-    {
-        while (*a != min_node)
-        {
-            rra(a);
-        }
-    }
-    printf_for_shell_debbug(a, b);
+    // t_stack_node *min_node = find_min(a);
+    // if (min_node->above_median)
+    // {
+    //     while (*a != min_node)
+    //     {
+    //         ra(a);
+    //     }
+    // }
+    // else 
+    // {
+    //     while (*a != min_node)
+    //     {
+    //         rra(a);
+    //     }
+    // }
+    // printf_for_shell_debbug(a, b);
     
     // // sinon, on continue 
     // on reinitialise les nouvelles positions et les nouveaux cout et 
