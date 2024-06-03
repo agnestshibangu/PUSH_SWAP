@@ -18,7 +18,7 @@ void     swap(t_stack_node **head)
     }
     if (!head || !next) // if no first or second node 
 	{
-        printf("error node don't exist");
+        printf("error node doesn't exist");
         return ;
     }
     tmp_index = first_node->index;

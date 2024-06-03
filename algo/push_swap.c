@@ -93,7 +93,7 @@ void    is_above_median(t_stack_node **head)
     current = *head;
     // printf part
     while (current != NULL) {
-        printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
+       // printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
         current = current->next;
     }
 }
@@ -115,12 +115,12 @@ void    define_push_cost(t_stack_node **head)
         if (current->above_median == true)
         {
             current->push_cost = current->position;
-            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            // printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
         else if (current->above_median == false) 
         {
             current->push_cost = len - current->position;
-            printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
+            // printf("  the cost of the node %d is %d\n", current->nbr, current->push_cost);
         }
         current = current->next;
     }
@@ -128,9 +128,9 @@ void    define_push_cost(t_stack_node **head)
 
 void    define_push_cost_a_b(t_stack_node **a, t_stack_node **b)
 {
-    printf("\n\n define push cost for a \n\n");
+    // printf("\n\n define push cost for a \n\n");
     define_push_cost(a);
-    printf("\n\n define push cost for a \n\n");
+    // printf("\n\n define push cost for a \n\n");
     define_push_cost(b);
 }
 
@@ -207,7 +207,7 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     // on definit le cheapest pour chaque stack a et b
     printf(" == define the cheapest for a and b\n");
     define_cheapest_a_b(a, b);
-    check_two_cheapest_after_def(a, b);
+    // check_two_cheapest_after_def(a, b);
 
     // une fois les noeuds les plus cheap definit, on les fait remonter en haut des deux piles
     printf(" == move cheapest of a and b to top\n");
@@ -221,11 +221,30 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     printf(" == on verifie l'etat de la liste apres le push\n");
     printf_for_shell_debbug(a, b);
 
-    // // si c'est le cas on quitte la fonction
-    reinitialise_before_next_move(a, b);
-    reinitialise_before_next_move(a, b);
-    reinitialise_before_next_move(a, b);
-
+    while (*b)
+    {
+        reinitialise_before_next_move(a, b);
+        move_both_cheapest_to_top(a, b); 
+        pba(a, b);
+    }
+   
+    t_stack_node *min_node = find_min(a);
+    if (min_node->above_median)
+    {
+        while (*a != min_node)
+        {
+            ra(a);
+        }
+    }
+    else 
+    {
+        while (*a != min_node)
+        {
+            rra(a);
+        }
+    }
+    printf_for_shell_debbug(a, b);
+    
     // // sinon, on continue 
     // on reinitialise les nouvelles positions et les nouveaux cout et 
     

@@ -29,14 +29,14 @@ void	    push(t_stack_node **src, t_stack_node **dst)
 void    pab(t_stack_node **a, t_stack_node **b)
 {
     push(a, b);
-    printf("pa");
+    printf("pa\n");
 }
 
 // push b vers a
 void    pba(t_stack_node **a, t_stack_node **b)
 {
     push(b, a);
-    printf("pb");
+    printf("pb\n");
 }
 
 

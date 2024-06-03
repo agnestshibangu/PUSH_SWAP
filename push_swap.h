@@ -34,6 +34,7 @@ t_stack_node *find_maxi(t_stack_node **head);
 t_stack_node *find_min(t_stack_node **head);
 t_stack_node* find_last_node(t_stack_node **headRef);
 int	list_size(t_stack_node **head);
+void     sort_after_push(t_stack_node **head);
 
 // DEBBUG
 void printList(t_stack_node **head);

@@ -42,12 +42,7 @@ BLUE = \033[94m
 # Compiling PUSH_SWAP
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -g
-
-# @echo "╔═════════════════════════════════════════════════════════════════════════╗"
-# @echo "║                                                                         ║"
-# @echo "║	 ✨ 🚀 CONVERT SOURCE CODE TO MACHINE CODE BINARY FORMAT 🚀 ✨       ║"
-# @echo "║                                                                         ║")
-# @echo "╚═════════════════════════════════════════════════════════════════════════╝")
+	@echo "✨ 🚀 CONVERT SOURCE CODE TO MACHINE CODE BINARY FORMAT 🚀 ✨"
 
 
 clean:
