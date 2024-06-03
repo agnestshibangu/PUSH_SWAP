@@ -30,9 +30,6 @@ void reinitialise_before_next_move(t_stack_node **a, t_stack_node **b)
 
 void push_swap(t_stack_node **a, t_stack_node **b)
 {
-    printf(" == initial state \n");
-    printf_for_shell_debbug(a, b);
-
     push_a_nodes_to_b(a, b);
     
     sort_three(a);
@@ -43,8 +40,7 @@ void push_swap(t_stack_node **a, t_stack_node **b)
         move_cheapest_to_top(b);
         find_target_to_move(a, b);
         move_cheapest_to_top_a(a, b); 
-        pba(a, b);
-        printf_for_shell_debbug(a, b);     
+        pba(a, b);     
     }
    
     t_stack_node *min_node = find_min(a);

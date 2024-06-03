@@ -24,18 +24,13 @@ void assign_target_node(t_stack_node **a, t_stack_node **b) {
         if (best_match == LONG_MAX)
         {
             current_in_b->target_node = find_min(a);
-            printf("  !PAS DE VALEUR PLUS GRANDE DONC MIN! le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
         }
         else 
         {
             current_in_b->target_node = target_node;
-            printf("le target node de %d est : %d\n", current_in_b->nbr, current_in_b->target_node->nbr);
         }
-            
-        printf("...............\n");
         current_in_b = current_in_b->next;
     }
-    printf("\n\n");
 }
 
 void    define_nodes_position(t_stack_node **head)
@@ -47,11 +42,9 @@ void    define_nodes_position(t_stack_node **head)
     current = *head;
     while (current != NULL) {
         current->position = i;
-        printf("  NODE %d at postion %d \n", current->nbr, current->position);
         i++;
         current = current->next;
     }
-    printf("\n");
 }
 
 void    define_nodes_position_a_b(t_stack_node **a, t_stack_node **b)
@@ -80,16 +73,14 @@ void    is_above_median(t_stack_node **head)
         current = current->next;
     }
     current = *head;
-    // printf part
-    while (current != NULL) {
-       printf("  is the node %d above median ? %d\n", current->nbr, current->above_median);
-        current = current->next;
-    }
+    // // printf part
+    // while (current != NULL) {
+    //     current = current->next;
+    // }
 }
 
 void    define_is_above_median_a_b(t_stack_node **a, t_stack_node **b)
 {
     is_above_median(a);
     is_above_median(b);
-    printf("\n");
 }
