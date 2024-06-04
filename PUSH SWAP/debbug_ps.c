@@ -3,7 +3,6 @@
 void printList(t_stack_node **head) {
     
     t_stack_node *current = *head; 
-    printf("  ");
     while (current != NULL) {
         printf("%d -> ", current->nbr); 
         current = current->next; 
@@ -43,10 +42,10 @@ void debugPrintList(t_stack_node **head) {
 void printf_for_shell_debbug(t_stack_node **a, t_stack_node **b)
 {
     printf("------------------ \n");
-    printf("  STACK A : \n"); 
+    printf("STACK A :\n"); 
     printList(a);
     printf("\n");
-    printf("  STACK B : \n");
+    printf("STACK B :\n");
     printList(b);
     printf("------------------ \n");
     printf("\n");

@@ -15,13 +15,14 @@ void assign_target_node(t_stack_node **a, t_stack_node **b) {
         current_in_a = *a; // Reset for next iteration over b
         while (current_in_a)
         {
-            if (current_in_a->nbr > current_in_b->nbr && current_in_a->nbr < best_match) {
+            if (current_in_a->nbr > current_in_b->nbr && current_in_a->nbr < best_match)
+            {
                 best_match = current_in_a->nbr;
                 target_node = current_in_a;
             }
             current_in_a = current_in_a->next;
         }
-        if (best_match == LONG_MAX)
+        if (LONG_MAX == best_match)
         {
             current_in_b->target_node = find_min(a);
         }
