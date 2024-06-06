@@ -27,23 +27,21 @@ void reinitialise_before_next_move(t_stack_node **a, t_stack_node **b)
     define_cheapest(b);
 }
 
-// void free_list(t_stack_node **head) {
-//     t_stack_node *current = *head;
-//     t_stack_node *next;
+void free_list(t_stack_node **head) {
+    t_stack_node *current = *head;
+    t_stack_node *next;
 
-//     while (current != NULL) {
-//         next = current->next;
-//         free(current);
-//         current = next;
-//     }
-//     *head = NULL;
-// }
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    *head = NULL;
+}
 
 void push_swap(t_stack_node **a, t_stack_node **b)
 {
-    printf("push until len a 3\n");
     push_a_nodes_to_b(a, b);
-    printf("sort list 3\n");
     sort_three(a);
     // printf_for_shell_debbug(a, b);
     
@@ -72,22 +70,15 @@ void push_swap(t_stack_node **a, t_stack_node **b)
     if (min_node->above_median)
     {
         while (*a != min_node)
-        {
-            //printf("rotate a final sort\n");
             ra(a);
-        }
-           
     }
     else 
     {
         while (*a != min_node)
-        {
-            //printf("reverse rotate a final sort\n");
             rra(a);
-        }
     }
-    // free_list(a);
-   // printf_for_shell_debbug(a, b);
+    //printf_for_shell_debbug(a, b);
+    free_list(a);
 }
 
 

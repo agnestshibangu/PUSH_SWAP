@@ -115,8 +115,6 @@ t_stack_node* create_small_list(char *av) {
     return head;
 }
 
-
-
 t_stack_node* create_stack_a(t_stack_node **head)
 {
     t_stack_node* a;

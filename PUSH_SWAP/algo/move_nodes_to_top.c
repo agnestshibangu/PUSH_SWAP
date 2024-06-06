@@ -43,9 +43,9 @@ void move_cheapest_to_top_a(t_stack_node **a, t_stack_node **b)
         while ((*a) != node_to_move)
         {
             if (node_to_move->above_median == true)
-                ra(a); // Rotate up
+                ra(a);
             else if (node_to_move->above_median == false)
-                rra(a); // Rotate down
+                rra(a);
         }
     }
 }
@@ -61,15 +61,11 @@ void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b)
             && cheapest_node_in_a->above_median && cheapest_node_in_b->above_median)
     {
         rr(a, b);
-        //printf("rr both stacks !");
-        
     }
     while ((*b) != cheapest_node_in_b && (*a) != cheapest_node_in_a
             && !cheapest_node_in_a->above_median && !cheapest_node_in_b->above_median)
     {
         rrr(a, b);
-        //printf("------third case-----\n");
-        //printf("rrr both stacks !");
     }
 }
 
@@ -84,9 +80,9 @@ void finish_moving_to_top_b(t_stack_node **b)
         while ((*b) != cheapest_node_in_b)
         {
             if (cheapest_node_in_b->above_median)
-                ra(b); // Rotate up
+                ra(b);
             else if (!cheapest_node_in_b->above_median)
-                rra(b); // Rotate down
+                rra(b);
         }
     }
 }
@@ -102,9 +98,9 @@ void finish_moving_to_top_a(t_stack_node **a, t_stack_node **b)
         while ((*a) != cheapest_node_in_a)
         {
             if (cheapest_node_in_a->above_median)
-                ra(a); // Rotate up
+                ra(a);
             else if (!cheapest_node_in_a->above_median)
-                rra(a); // Rotate down
+                rra(a);
         }
     }
 }

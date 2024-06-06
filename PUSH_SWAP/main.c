@@ -8,8 +8,8 @@ int main(int ac, char **av)
     t_stack_node* a = NULL;
     head = create_list(ac, av);
 
-    // char *string = "";
-    // b = create_small_list(string);
+    char *string = "";
+    b = create_small_list(string);
     b = create_stack_b(&b);
     a = create_stack_a(&head);
 
