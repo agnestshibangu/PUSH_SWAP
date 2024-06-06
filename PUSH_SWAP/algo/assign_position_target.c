@@ -74,10 +74,6 @@ void    is_above_median(t_stack_node **head)
         current = current->next;
     }
     current = *head;
-    // // printf part
-    // while (current != NULL) {
-    //     current = current->next;
-    // }
 }
 
 void    define_is_above_median_a_b(t_stack_node **a, t_stack_node **b)

@@ -60,15 +60,16 @@ void move_both_cheapest_to_top(t_stack_node **a, t_stack_node **b)
     while ((*b) != cheapest_node_in_b && (*a) != cheapest_node_in_a
             && cheapest_node_in_a->above_median && cheapest_node_in_b->above_median)
     {
-        //printf("rr both stacks !");
         rr(a, b);
+        //printf("rr both stacks !");
+        
     }
     while ((*b) != cheapest_node_in_b && (*a) != cheapest_node_in_a
             && !cheapest_node_in_a->above_median && !cheapest_node_in_b->above_median)
     {
+        rrr(a, b);
         //printf("------third case-----\n");
         //printf("rrr both stacks !");
-        rrr(a, b);
     }
 }
 

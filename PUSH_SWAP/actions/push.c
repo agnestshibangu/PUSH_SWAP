@@ -30,7 +30,6 @@ void    pab(t_stack_node **a, t_stack_node **b)
 {
     push(a, b);
     printf("pb\n");
-    //printf("pa\n");
 }
 
 // push b vers a
@@ -38,7 +37,6 @@ void    pba(t_stack_node **a, t_stack_node **b)
 {
     push(b, a);
     printf("pa\n");
-    // printf("pb\n");
 }
 
 
