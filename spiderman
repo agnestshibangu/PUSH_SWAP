@@ -1,0 +1,76 @@
+void    define_push_cost(t_stack_node **a, t_stack_node **b)
+{
+	int	len_a;
+	int	len_b;
+    t_stack_node *current = *b; 
+
+	len_a = list_size(a);
+	len_b = list_size(b);
+
+	while (current)
+	{
+        if (current->above_median && current->target_node->above_median)
+        {
+            current->push_cost = current->position;
+            if (current->target_node->position > current->position)
+                current->push_cost = current->target_node->position;
+        }
+		else if (!(current->above_median))
+            current->push_cost = len_b - (current->position);
+        else if (current->target_node->above_median)
+            current->push_cost += current->target_node->position;
+        else if (!current->target_node->above_median)
+			current->push_cost += len_a - (current->target_node->position);
+		current = current->next;
+	}
+}
+
+void    define_push_cost(t_stack_node **a, t_stack_node **b)
+{
+    int len_a;
+    int len_b;
+    t_stack_node *current = *b; 
+
+    len_a = list_size(a);
+	len_b = list_size(b);
+    // printf(" len a %d\n", len_a);
+    // printf(" len b %d\n", len_b);
+
+    // int tempcur = 0;
+    // int temptar = 0;
+
+    while (current) 
+	{
+        if (current->above_median && current->target_node->above_median)
+        {
+            current->push_cost = current->position;
+            if (current->target_node->position > current->position)
+                current->push_cost = current->target_node->position;
+        }
+        else if (!current->above_median && !current->target_node->above_median)
+        {
+            current->push_cost = len_b - current->position;
+            if ((len_b - current->position) < (len_a - current->target_node->position))
+                current->push_cost = len_a - current->target_node->position;
+        }
+        else if (current->above_median && !current->target_node->above_median)
+            current->push_cost = current->position + (len_a - current->target_node->position); 
+        else if (!current->above_median && current->target_node->above_median)
+            current->push_cost = (len_b - current->position) + current->target_node->position;
+        /*else
+        {
+            if (current->above_median)
+                tempcur = current->position;
+            else
+                tempcur = (len_b - current->position);
+            if (current->target_node->above_median)
+                temptar = current->target_node->position;
+            else
+                temptar = (len_a - current->target_node->position);
+
+            current->push_cost = tempcur + temptar;
+
+        }*/
+        current = current->next;
+    }
+}
